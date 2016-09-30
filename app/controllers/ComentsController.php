@@ -6,17 +6,6 @@ class ComentsController extends Controller
 		'Coments'
 	];
 	
-	public function actionCreate()
-	{
-		if(!empty($_POST)) {
-			if($this->Coments->saveComents()) {
-				return true;
-			}
-			return false;
-		}
-		return 'create';
-	}
-
 	public function actionIndex()
 	{
 		if(!$this->Coments->getCookie()) {
@@ -24,6 +13,17 @@ class ComentsController extends Controller
 		}
 		$this->set('coments', $this->Coments->find());
 	}
+	
+	public function actionCreate()
+	{	var_dump($_POST);
+		if(!empty($_POST)) {
+			/*if($this->Coments->saveComents()) {
+				echo true;
+			}*/
+			return false;
+		}
+	}
+
 	
 	public function actionDelete()
 	{
@@ -35,9 +35,19 @@ class ComentsController extends Controller
 		}
 		return false;
 	}
+	
+	public function actionReturnComents()
+	{
+		
+	}
 
 	public function actionError($error = '404')
 	{
 
+	}
+	
+	public function actionTest()
+	{
+		echo json_encode(['id' => 'fuck']);
 	}
 }
