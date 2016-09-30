@@ -43,6 +43,11 @@ class Coments extends Model
 			]);
 	}
 	
+	public function updateRating($id)
+	{
+		
+	}
+	
 	public function setCookie()
 	{
 		$name = $this->users[array_rand($this->users)] . time();
