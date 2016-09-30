@@ -43,9 +43,12 @@ class Coments extends Model
 			]);
 	}
 	
-	public function updateRating($id)
+	public function updateRating($id, $rating)
 	{
-		
+		$this->save([
+			'rating' => $rating + 1
+		], 
+		['id' => ['=', $id]]);
 	}
 	
 	public function setCookie()

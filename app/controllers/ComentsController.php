@@ -41,10 +41,13 @@ class ComentsController extends Controller
 	{
 		if(isset($_POST['data'])) {
 			$data = explode(',', $_POST['data']);
-			var_dump($data);
-			/*if((int)($_POST['id']) > 0 && !$this->Coments->isUserComents($_POST['id'])) {
-				echo 'asdas';
-			}*/
+			
+			if(!$this->Coments->isUserComents($data[1])) {
+				$this->Coments->updateRating($data[1], $data[0]);
+				$this->ReturnComents();
+				return;
+			}
+			echo 'error';
 		}
 	}
 	

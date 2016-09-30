@@ -1,28 +1,31 @@
 window.onload = function() {
-	
-	document.getElementById('send_coment').onclick = function(e) {
-		e.preventDefault();
-		Coments.createComents();
-	}
-	
-	var i;
-	
-	for(i = 0; i < document.getElementsByClassName('delete_coment').length; i++ ) {
-		document.getElementsByClassName('delete_coment')[i].onclick = function(e) {
-			e.preventDefault();
-			Coments.deleteComents(e);
-		}
-	}
-	
-	for(i = 0; i < document.getElementsByClassName('coment_rating').length; i++ ) {
-		document.getElementsByClassName('coment_rating')[i].onclick = function(e) {
-			e.preventDefault();
-			Coments.addRating(e);
-		}
-	}
+	Coments.start();
 }
 
 var Coments = {
+		
+	start: function() {
+		document.getElementById('send_coment').onclick = function(e) {
+			e.preventDefault();
+			Coments.createComents();
+		}
+		
+		var i;
+		
+		for(i = 0; i < document.getElementsByClassName('delete_coment').length; i++ ) {
+			document.getElementsByClassName('delete_coment')[i].onclick = function(e) {
+				e.preventDefault();
+				Coments.deleteComents(e);
+			}
+		}
+		
+		for(i = 0; i < document.getElementsByClassName('coment_rating').length; i++ ) {
+			document.getElementsByClassName('coment_rating')[i].onclick = function(e) {
+				e.preventDefault();
+				Coments.addRating(e);
+			}
+		}
+	},
 	
 	url: document.getElementById('url').getAttribute('data-url'),
 		
@@ -40,7 +43,7 @@ var Coments = {
 	},
 	
 	addRating: function(e) {
-		Coments.axaj('add', 'data=' + e.path[0].innerHTML + ',' + e.path[0].getAttribute('data-id'), Coments.addRating);
+		Coments.axaj('add', 'data=' + e.path[0].innerHTML + ',' + e.path[0].getAttribute('data-id'), Coments.changeComents);
 	},
 	
 	changeComents: function(responce) {
@@ -50,6 +53,7 @@ var Coments = {
 		} else if(responce != '') {
 			document.getElementById('url').innerHTML = responce;
 		}
+		Coments.start();
 	},
 	
 	axaj: function(action, data, callback){
@@ -60,8 +64,8 @@ var Coments = {
 
 	    xmlhttp.onreadystatechange = function() {
 	        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	        	//callback(xmlhttp.responseText);
-	        	console.log(xmlhttp.responseText);
+	        	callback(xmlhttp.responseText);
+	        	//console.log(xmlhttp.responseText);
 	        }
 	    }
 	    
