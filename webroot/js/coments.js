@@ -40,7 +40,7 @@ var Coments = {
 	},
 	
 	addRating: function(e) {
-		Coments.axaj('add', 'data=' + JSON.stringify({'rating': e.path[0].innerHTML, 'id': e.path[0].getAttribute('data-id')}), Coments.addRating);
+		Coments.axaj('add', 'data=' + e.path[0].innerHTML + ',' + e.path[0].getAttribute('data-id'), Coments.addRating);
 	},
 	
 	changeComents: function(responce) {

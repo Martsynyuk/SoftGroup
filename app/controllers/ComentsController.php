@@ -38,8 +38,10 @@ class ComentsController extends Controller
 	}
 	
 	public function actionAdd()
-	{var_dump($_POST['data']);
+	{
 		if(isset($_POST['data'])) {
+			$data = explode(',', $_POST['data']);
+			var_dump($data);
 			/*if((int)($_POST['id']) > 0 && !$this->Coments->isUserComents($_POST['id'])) {
 				echo 'asdas';
 			}*/
