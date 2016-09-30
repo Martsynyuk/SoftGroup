@@ -11,7 +11,8 @@ class ComentsController extends Controller
 		if(!$this->Coments->getCookie()) {
 			$this->Coments->setCookie();
 		}
-		$this->ReturnComents();
+		$this->set('coments', $this->Coments->find());
+		$this->set('url', $this->params[0]);
 	}
 	
 	public function actionCreate()
@@ -55,7 +56,7 @@ class ComentsController extends Controller
 	{
 		$this->set('coments', $this->Coments->find());
 		$this->set('url', $this->params[0]);
-		$this->display('index');
+		$this->display('coments');
 	}
 
 	public function actionError($error = '404')
