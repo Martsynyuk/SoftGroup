@@ -50,11 +50,10 @@ var Coments = {
 		
 		if(responce == 'error') {
 			alert('error');
-			return;
 		} else if(responce != '') {
 			document.getElementById('url').innerHTML = responce;
+			Coments.start();
 		}
-		Coments.start();
 	},
 	
 	axaj: function(action, data, callback){
