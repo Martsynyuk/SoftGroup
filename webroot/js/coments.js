@@ -63,7 +63,7 @@ var Coments = {
 	        	callback(xmlhttp.responseText);
 	        }
 	    }
-	    console.log(Coments.url);
+	    
 		xmlhttp.open("POST", "/coments/" + action + '/' + Coments.url, true);
 		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xmlhttp.send(data);
