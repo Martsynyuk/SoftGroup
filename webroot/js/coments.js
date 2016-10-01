@@ -1,7 +1,3 @@
-window.onload = function() {
-	Coments.start();
-}
-
 var Coments = {
 		
 	start: function() {
@@ -27,7 +23,7 @@ var Coments = {
 		}
 	},
 	
-	url: document.getElementById('url').getAttribute('data-url'),
+	url: '',
 		
 	createComents: function() {
 		
@@ -67,9 +63,14 @@ var Coments = {
 	        	callback(xmlhttp.responseText);
 	        }
 	    }
-	    
+	    console.log(Coments.url);
 		xmlhttp.open("POST", "/coments/" + action + '/' + Coments.url, true);
 		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xmlhttp.send(data);
 	}
+}
+
+window.onload = function() {
+	Coments.url = document.getElementById('url').getAttribute('data-url');
+	Coments.start();
 }
