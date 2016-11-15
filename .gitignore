@@ -45,6 +45,7 @@ Temporary Items
 # Directories and files 
 
 .settings/
+.idea/
 .buildpath
 *~
 .project
