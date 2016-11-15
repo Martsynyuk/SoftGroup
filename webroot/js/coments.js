@@ -43,7 +43,6 @@ var Coments = {
 	},
 	
 	changeComents: function(responce) {
-		
 		if(responce == 'error') {
 			alert('error');
 		} else if(responce != '') {
@@ -60,6 +59,7 @@ var Coments = {
 
 	    xmlhttp.onreadystatechange = function() {
 	        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
 	        	callback(xmlhttp.responseText);
 	        }
 	    }

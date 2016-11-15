@@ -4,7 +4,7 @@ session_start();
 $settings = [
 	'database' => [
 		'driver' => 'MySQL',
-		'host' => 'localhost',
+		'host' => 'softgroup:3307',
 		'dbname' => 'softgroup',
 		'user' => 'root',
 		'password' => ''

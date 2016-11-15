@@ -11,7 +11,7 @@ class ComentsController extends Controller
 		if(!$this->Coments->getCookie()) {
 			$this->Coments->setCookie();
 		}
-		$this->set('coments', $this->Coments->find());
+		$this->set('coments', $this->Coments->find(['url' => ['=', $this->params[0]]]));
 		$this->set('url', $this->params[0]);
 	}
 	
@@ -54,7 +54,7 @@ class ComentsController extends Controller
 	
 	private function ReturnComents()
 	{
-		$this->set('coments', $this->Coments->find());
+		$this->set('coments', $this->Coments->find(['url' => ['=', $this->params[0]]]));
 		$this->set('url', $this->params[0]);
 		$this->display('coments');
 	}
